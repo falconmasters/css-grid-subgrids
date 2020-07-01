@@ -34,8 +34,8 @@ header h1 {
 
 .publicaciones {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
-	
+	grid-template-columns: repeat(6, 1fr);
+	grid-template-rows: repeat(1, auto 1fr auto);
 	gap: 20px;
 }
 
@@ -46,24 +46,32 @@ header h1 {
 	border-radius: 5px;
 
 	display: grid;
+	grid-row: span 3;
+	grid-column: span 3;
+
+	grid-template-columns: 1fr;
+	grid-template-rows: auto 1fr auto;
+	grid-template-rows: subgrid;
+	grid-template-columns: subgrid;
 }
 
 .publicacion .titulo {
 	color: #C00000;
 	font-size: 32px;
 	margin: 0;
-	
+	grid-column: span 3;
 }
 
 .publicacion .texto {
 	line-height: 28px;
 	color: #1E1E1E;
-	
+	grid-column: span 3;
 }
 
 .publicacion .botones {
-	
-
+	grid-column: span 3;
+	display: grid;
+	grid-template-columns: subgrid;
 }
 
 .publicacion button {
@@ -81,5 +89,11 @@ header h1 {
 .publicacion button.retweets i {color: #40C800;}
 
 @media screen and (max-width: 850px) {
-	
+	.publicaciones {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	.publicacion {
+		grid-template-rows: auto 1fr auto;
+	}
 }
